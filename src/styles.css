@@ -1,0 +1,67 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-coffee-900: #1a1412;
+  --color-coffee-800: #2d2421;
+  --color-coffee-700: #3d322d;
+  --color-coffee-100: #fdfaf7;
+  --color-coffee-50: #fffdfb;
+  --color-accent: #c69c6d;
+  --color-accent-light: #e0b98a;
+  --font-display: "Playfair Display", serif;
+  --font-sans: "Plus Jakarta Sans", sans-serif;
+}
+
+@theme inline {
+  --color-background: var(--color-coffee-100);
+  --color-foreground: var(--color-coffee-900);
+  --color-primary: var(--color-accent);
+  --color-primary-foreground: var(--color-coffee-900);
+  --color-border: rgba(26, 20, 18, 0.08);
+}
+
+:root {
+  --radius: 1rem;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  body {
+    background-color: var(--color-coffee-100);
+    color: var(--color-coffee-900);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@keyframes steam-rise {
+  0% { transform: translateY(0) scaleX(1); opacity: 0; }
+  20% { opacity: 0.6; }
+  100% { transform: translateY(-40px) scaleX(1.4); opacity: 0; }
+}
+@keyframes ar-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(198, 156, 109, 0.5); }
+  50% { box-shadow: 0 0 0 12px rgba(198, 156, 109, 0); }
+}
+.animate-ar-pulse {
+  animation: ar-pulse 2.4s ease-out infinite;
+}
+.animate-steam {
+  animation: steam-rise 3s ease-out infinite;
+}
