@@ -1,11 +1,15 @@
-import React from "react";
-import "@google/model-viewer";
+import React, { useEffect } from "react";
 
 export default function ModelViewerAR({
   model,
 }: {
   model: string;
 }) {
+
+  useEffect(() => {
+    import("@google/model-viewer");
+  }, []);
+
   return (
     <div className="w-full h-screen bg-white">
       <div
